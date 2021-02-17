@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-4 text-center">
+            <h3> joueurs</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>n°</th>
+                            <th>email</th>
+                            <th> prenom</th>
+                            
+ 
+                        </tr>
+                    </thead>
+                    <body>
+                        {% for player in players %}
+                                <tr>
+                                     <td> {{loop.index}} </td>
+                                     <td> {{player.email}} </td>
+                                     <td>{{player.nickname}} </td>
+                                     
+                                 </tr>
+                        {% endfor %}
+                    </body>
+                </table>
+
+                <a href=" {{ path('player_create') }}" class="btn btn-outline-dark">ajoute joueur</a>
+        
+        </div>
+        <div class="col-4 ">
+
+             <h3>jeux</h3>
+               <table class="table">
+                   <thead>
+                       <tr>
+                           <th>nb jeux</th>
+                           <th>titre</th>
+                           <th>joueurs min</th>
+                           <th>joueurs max</th>
+
+                       </tr>
+                   </thead>
+                   <body>
+                       {% for game in games %}
+                               <tr>
+                                    <td> {{loop.index}} </td>
+                                    <td> {{game.title}} </td>
+                                    <td>{{game.minPlayers}} </td>
+                                    <td>{{game.maxPlayers}} </td>
+                                </tr>
+                       {% endfor %}
+                   </body>
+               </table>
+               <a href="" class="btn btn-outline-dark">ajouter un jeu </a>
+        </div>
+        <div class="col-4 text-center">
+
+            <H3>MATCH</H3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>game id</th>
+                        <th>debut</th>
+                        <th>gagnat</th>
+
+                    </tr>
+                </thead>
+                <body>
+                    {% for contest in contests %}
+                            <tr>
+                                 
+                                 <td> {{contest.gameId}} </td>
+                                 <td>{{contest.startDate}} </td>
+                                 <td>{{contest.winnerId}} </td>
+                             </tr>
+                    {% endfor %}
+                </body>
+            </table>
+
+
+
+
+            <a href="" class="btn btn-outline-dark">ajoute un match</a>
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}
